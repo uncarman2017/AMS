@@ -115,3 +115,14 @@ func (this *UserController) HandleLogout() {
 	this.DelSession("userName")
 	this.Redirect("/login", 302)
 }
+
+//登录展示页面
+func (this *UserController) ShowArticleRank() {
+	//获取所有文章数据展示到页面上
+	o := orm.NewOrm()
+	qs := o.QueryTable("Article")
+	var articles []models.Article
+	qs.All(&articles)
+	this.Data["articles"] = articles
+	this.TplName = "articleRank.html"
+}

@@ -47,7 +47,7 @@ func (this *ArticleController) ShowIndex() {
 		count, _ = qs.RelatedSel("ArticleType").Filter("ArticleType__TypeName", typeName).Count()
 	}
 	//定义每页的记录数
-	pageCount := 2
+	pageCount := 15
 	//计算总页数
 	pageNum := math.Ceil(float64(count) / float64(pageCount))
 	//获取首页末页记录
@@ -141,6 +141,7 @@ func (this *ArticleController) HandleAddArticle() {
 	//获取数据
 	articleName := this.GetString("articleName")
 	content := this.GetString("content")
+	articlePoint, _ := this.GetInt("articlePoint", 0)
 	//调用函数处理文件上传-包含文件获取，校验，存储，返回文件存储路径
 	savePath := UploadFile(this, "uploadname")
 	//获取文章类型名
@@ -159,6 +160,7 @@ func (this *ArticleController) HandleAddArticle() {
 	var art models.Article
 	art.Title = articleName
 	art.Content = content
+	art.ArticlePoint = articlePoint
 	art.Img = savePath
 	//***获取一个文章类型对象，并插入到文章中
 	var articleType models.ArticleType

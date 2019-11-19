@@ -15,7 +15,8 @@
 
         <table class="common_table">
             <tr>
-                <th width="43%">文章标题</th>
+                <th width="38%">文章标题</th>
+                <th width="5%">得分</th>
                 <th width="10%">文章内容</th>
                 <th width="16%">添加时间</th>
                 <th width="7%">阅读量</th>
@@ -27,6 +28,7 @@
         {{range .articles}}
             <tr>
                 <td>{{.Title}}</td>
+                <td>{{.ArticlePoint}}</td>
                 <td><a href="/article/content?id={{.Id}}">查看详情</a></td>
                 <td>{{.Time.Format "20060102 15:04:05"}}</td>
                 <td>{{.ReadCount}}</td>

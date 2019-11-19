@@ -22,14 +22,15 @@ type User struct {
 
 //定义文章类
 type Article struct {
-	Id          int          `orm:"pk;auto"`
-	Title       string       `orm:"unique;size(40)"`
-	Content     string       `orm:"size(500)"`
-	Img         string       `orm:"null"`
-	Time        time.Time    `orm:"type(datetime);auto_now_add"`
-	ReadCount   int          `orm:"default(0)"`
-	ArticleType *ArticleType `orm:"rel(fk);null;on_delete(set_null)"`
-	Users       []*User      `orm:"rel(m2m)"`
+	Id           int          `orm:"pk;auto"`
+	Title        string       `orm:"unique;size(40)"`
+	Content      string       `orm:"size(500)"`
+	ArticlePoint int          `orm:"default(0)"`
+	Img          string       `orm:"null"`
+	Time         time.Time    `orm:"type(datetime);auto_now_add"`
+	ReadCount    int          `orm:"default(0)"`
+	ArticleType  *ArticleType `orm:"rel(fk);null;on_delete(set_null)"`
+	Users        []*User      `orm:"rel(m2m)"`
 }
 
 //定义文章类型类

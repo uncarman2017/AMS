@@ -32,6 +32,9 @@ func init() {
 	beego.Router("/article/deleteType", &controllers.ArticleController{}, "get:HandleDeleteType")
 	//退出登录
 	beego.Router("/article/logout", &controllers.UserController{}, "get:HandleLogout")
+	//文章排行榜
+	beego.Router("/rank", &controllers.UserController{}, "get:ShowArticleRank")
+
 }
 
 func filterFunc(ctx *context.Context) {
